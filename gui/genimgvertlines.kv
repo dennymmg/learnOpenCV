@@ -1,0 +1,128 @@
+# Custom button
+<CustButton@Button>:
+	font_size: 20
+
+<ScreenManagement>:
+    SettingsLayoutScreen:
+        name: 'genimgvertlineslayout'
+
+<SettingsLayoutScreen>:
+    SettingsLayout:
+
+<SettingsLayout>:
+    canvas.before:
+        Color:
+            rgba: 0,0.3,0.8,1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    cols: 1
+    orientation: "vertical"
+    id: info
+    display1: entry1
+    display2: entry2
+    display3: entry3
+    padding :10
+    spacing :10
+
+    active: '1'
+
+    BoxLayout:
+        orientation: 'vertical'
+        height: 80
+        size_hint: (0.2, None)
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Settings'
+                font_name: 'Bookerly'
+                font_size:34
+
+    BoxLayout:
+        orientation: 'vertical'
+        height: 30
+        size_hint: (0.2, None)
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Number of vertical lines:      '
+                font_name: 'Bookerly'
+                font_size:18
+                halign: 'right'
+                valign: 'middle'
+                text_size: self.size
+            TextInput:
+                text: app.disp3[:-1]
+                id: entry3
+                font_size:12
+                multiline: False
+
+    BoxLayout:
+        orientation: 'vertical'
+        height: 30
+        size_hint: (0.2, None)
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Image width:      '
+                font_name: 'Bookerly'
+                font_size:18
+                halign: 'right'
+                valign: 'middle'
+                text_size: self.size
+            TextInput:
+                text: app.disp1[:-1]
+                id: entry1
+                font_size:12
+                multiline: False
+
+    BoxLayout:
+        orientation: 'vertical'
+        height: 30
+        size_hint: (0.2, None)
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text: 'Image height:      '
+                font_name: 'Bookerly'
+                font_size:18
+                halign: 'right'
+                valign: 'middle'
+                text_size: self.size
+            TextInput:
+                text: app.disp2[:-1]
+                id: entry2
+                font_size:12
+                multiline: False
+
+    BoxLayout:
+        orientation: 'vertical'
+        height: 30
+        size_hint: (0.2, None)
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text:''
+            Label:
+                text:''
+            CustButton:
+                text: "Run"
+                size_hint_x: None
+                on_release: app.execute()
+                font_size: 15
+
+	BoxLayout:
+        orientation: 'vertical'
+        height: 30
+        size_hint: (0.2, None)
+        BoxLayout:
+            orientation: 'horizontal'
+            Label:
+                text:''
+            Label:
+                text: ''
+            CustButton:
+                text: "Update"
+                size_hint_x: None
+                on_release: info.parameters(entry1.text)
+                font_size: 15
